@@ -3,4 +3,4 @@ gunicorn
 django-heroku
 geni-lib
 pandas==0.20.3
-
+numpy
