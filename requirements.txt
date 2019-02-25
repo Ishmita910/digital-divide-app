@@ -1,3 +1,6 @@
 django
 gunicorn
 django-heroku
+geni-lib
+pandas==0.20.3
+
