@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Greeting
-import digitaldivide.src.digitaldivideutil as digitaldivideutil
+
 import digitaldivide.src.digitaldivide as digitaldivide
 # Create your views here.
 def index(request):
