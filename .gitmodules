@@ -1,0 +1,3 @@
+[submodule "digitaldivide"]
+	path = digitaldivide
+	url = https://github.com/Ishmita910/digitaldivide.git
