@@ -22,7 +22,7 @@ def db(request):
 
 def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
-    hset = digitaldivide.HouseholdSet('digitaldivide\dat\household-internet-data.csv').sample()
+    hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
     (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
     output_dump='hello'
@@ -39,7 +39,7 @@ def get_result(request):
     #output_dump += str(dir(house))
     house_sample_list = str(house.netem_template_up("192.168.0.1")).split()
     for each in house_sample_list:
-        output_dump += each + endl
+        output_dump += each + '\n'
     return render(
         request,
         'houseset.html',
