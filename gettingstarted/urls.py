@@ -18,4 +18,6 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
+    path("get_result/", hello.views.get_result, name = "get_result"),
+
 ]

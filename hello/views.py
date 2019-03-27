@@ -25,7 +25,7 @@ def get_result(request):
     hset = digitaldivide.HouseholdSet('digitaldivide\dat\household-internet-data.csv').sample()
     (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
-    output_dump=''
+    output_dump='hello'
     #output_dump +=   '''
     #Selected household ''' + str(house.unit_id) + ''' has the following characteristics:
     #Plan:  (Mbps down/up)'''+ str(house.advertised_rate_down)+" "+ str(house.advertised_rate_up)+ str(house.isp)+ str(house.technology)+ str(house.state)+'''--------------------------------------------------------'''
@@ -37,7 +37,9 @@ def get_result(request):
     #  '''Downlink jitter (ms)   '''+ house.jitter_down_ms.to_string()
     # '''Packet loss (%%)       |'''+house.loss.to_string()
     #output_dump += str(dir(house))
-    output_dump += house.netem_template_up("192.168.0.1")
+    house_sample_list = str(house.netem_template_up("192.168.0.1")).split()
+    for each in house_sample_list:
+        output_dump += each + endl
     return render(
         request,
         'houseset.html',
