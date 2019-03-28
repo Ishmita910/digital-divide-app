@@ -58,6 +58,7 @@ def house_id(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
     hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
     (rowindex, h) = next(hset.iterrows())
+    unit_id = 243232
     house = digitaldivide.Household(unit_id)
     output_dump='<br>'
     output_dump +=   ''' Selected household ''' + str(house.unit_id) + ''' has the following characteristics: <br>
