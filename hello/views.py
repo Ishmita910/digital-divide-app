@@ -50,3 +50,37 @@ def get_result(request):
             'output_dump': output_dump
         }
     )
+
+def house_id(request):
+    if request.method == 'POST':
+        unit_id = request.POST['txtUnitId']
+
+    # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
+    hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
+    (rowindex, h) = next(hset.iterrows())
+    house = digitaldivide.Household(unit_id)
+    output_dump='<br>'
+    output_dump +=   ''' Selected household ''' + str(house.unit_id) + ''' has the following characteristics: <br>
+    Plan:  (Mbps down/up)'''+ str(house.advertised_rate_down)+" "+ str(house.advertised_rate_up)
+    output_dump +='''<br>House ISP  '''+str(house.isp)
+    output_dump += '''<br> House Technology '''+str(house.technology)
+    output_dump += '''<br>House State '''+str(house.state)
+    output_dump +='''<br>Estimated price per month: $'''+str(house.monthly_charge)
+
+    output_dump+= '''<br>Upload rate (kbps)  '''+str(house.rate_up_kbps)
+    output_dump+='''<br>Download rate (kbps) '''+ str(house.rate_down_kbps)
+
+    output_dump += '''<br>Round-trip delay (ms)  '''+ str(house.latency_ms)
+    output_dump +='''<br>Uplink jitter (ms)     '''+ str(house.jitter_up_ms)
+    output_dump +='''<br>Downlink jitter (ms)   '''+ str(house.jitter_down_ms)
+    output_dump +='''<br>Packet loss (%%)       '''+str(house.loss)
+    output_dump += '<br><br><br>'
+    # output_dump += str(house.netem_template_up("192.168.0.1")).split()
+
+    return render(
+        request,
+        'houseset.html',
+        {
+            'output_dump': output_dump
+        }
+    )
