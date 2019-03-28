@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f36d74-bc47-4052-afd1-40170c41d2d9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digitaldivide" beforeDir="false" afterPath="$PROJECT_DIR$/digitaldivide" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digitaldivide/src/digitaldivideutil.py" beforeDir="false" afterPath="$PROJECT_DIR$/digitaldivide/src/digitaldivideutil.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/templates/houseset.html" beforeDir="false" afterPath="$PROJECT_DIR$/hello/templates/houseset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hello/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hello/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+            <state relative-caret-position="594">
+              <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -34,16 +35,16 @@
         <entry file="file://$PROJECT_DIR$/digitaldivide/src/digitaldivide.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="248">
-              <caret line="183" column="19" lean-forward="true" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
+              <caret line="183" column="19" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hello/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+            <state relative-caret-position="289">
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -51,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hello/templates/houseset.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -90,11 +91,11 @@
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/digitaldivide/src/digitaldivide.py" />
         <option value="$PROJECT_DIR$/hello/templates/page2.html" />
-        <option value="$PROJECT_DIR$/hello/templates/houseset.html" />
         <option value="$PROJECT_DIR$/digitaldivide/src/digitaldivideutil.py" />
         <option value="$PROJECT_DIR$/gettingstarted/urls.py" />
-        <option value="$PROJECT_DIR$/hello/templates/index.html" />
         <option value="$PROJECT_DIR$/hello/views.py" />
+        <option value="$PROJECT_DIR$/hello/templates/houseset.html" />
+        <option value="$PROJECT_DIR$/hello/templates/index.html" />
       </list>
     </option>
   </component>
@@ -155,6 +156,11 @@
               <item name="digital-divide-app" type="462c0819:PsiDirectoryNode" />
               <item name="hello" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="digital-divide-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digital-divide-app" type="462c0819:PsiDirectoryNode" />
+              <item name="staticfiles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -228,12 +234,12 @@
       <workItem from="1553470764766" duration="608000" />
       <workItem from="1553474068896" duration="5282000" />
       <workItem from="1553653772080" duration="1827000" />
-      <workItem from="1553699393050" duration="5355000" />
+      <workItem from="1553699393050" duration="8164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26375000" />
+    <option name="totallyTimeSpent" value="29184000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1900" y="15" width="1942" height="1102" extended-state="0" />
@@ -347,34 +353,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/houseset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/digitaldivide/src/digitaldivide.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="183" column="19" lean-forward="true" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
+          <caret line="183" column="19" selection-start-line="183" selection-start-column="19" selection-end-line="183" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hello/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+        <state relative-caret-position="594">
+          <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/houseset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
         </state>
       </provider>
     </entry>
