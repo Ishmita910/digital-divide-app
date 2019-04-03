@@ -15,7 +15,7 @@
         <td>
             <a type="button" class="btn btn-lg btn-default" href="../get_result/"><span class="glyphicon glyphicon-flash"></span> Get a random house sample</a>
             <br><br>
-            <form action="house_id/" method="post">
+            <form action="house_id/" method="post">{% csrf_token %}
                 <p>House ID:
               <input type="text" name = 'txtUnitId'><br></p>
 

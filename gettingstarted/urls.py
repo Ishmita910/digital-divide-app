@@ -19,6 +19,6 @@ urlpatterns = [
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
     path("get_result/", hello.views.get_result, name="get_result"),
-    path("house_id/", hello.views.house_id, name="house_id"),
+    path("get_result/house_id/", hello.views.house_id, name="house_id"),
 
 ]
