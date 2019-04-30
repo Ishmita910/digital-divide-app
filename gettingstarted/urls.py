@@ -20,5 +20,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("get_result/", hello.views.get_result, name="get_result"),
     path("get_result/house_id/", hello.views.house_id, name="house_id"),
+    path("options_landing/",hello.views.options_landing, name="options_landing"),
+    path("get_result/options_landing/",hello.views.options_landing, name="options_landing"),
 
 ]

@@ -20,6 +20,10 @@ def db(request):
     return render(request, "db.html", {"greetings": greetings})
 
 
+def options_landing(request):
+    return render(request, "options_landing.html")
+
+
 def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
     hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
@@ -63,7 +67,7 @@ def house_id(request):
     # house = digitaldivide.Household(unit_id)
     house = allcsv[allcsv.unit_id == unit_id].tail(1)
 
-    
+
     # house = digitaldivide.Household(unit_id)
     # print("new house")
     # print(house)
