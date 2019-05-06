@@ -27,7 +27,11 @@ def options_landing(request):
 def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
     hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
+    print(hset)
+
     (rowindex, h) = next(hset.iterrows())
+    print('>>')
+    print(h)
     house = digitaldivide.Household(h)
     output_dump='<br>'
     output_dump +=   ''' Selected household ''' + str(house.unit_id) + ''' has the following characteristics: <br>

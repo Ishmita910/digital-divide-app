@@ -2,22 +2,14 @@
 {% load staticfiles %}
 
 {% block content %}
+    <div class="jumbotron text-center">
+  <div class="container">
+    <h1>Bridging the Digital Divide </h1>
+    <p>A web application to help researchers emulate real households in test bed experiments</p>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Digitaldivide-HouseSet</title>
-</head>
-<body>
-<table>
-    <tr>
-        <td>
-            <a type="button" class="btn btn-lg btn-default" href="../get_result/"><span class="glyphicon glyphicon-flash"></span> Get another random house sample</a><a type="button" class="btn btn-lg btn-default" href="../get_result/"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
-            <br><br>
             <form action="house_id/" method="post">{% csrf_token %}
-                <p>Give me <input type="text" name = 'txtHouseSetQty'> household(s).<br><br>
-                From the State of <select>
+                <p>Give me <input type="text" name = 'txtHouseSetQty'> household(s)<br>
+                from the state of <select>
                                     <option value="Any">Any</option>
                                   <option value="AL">Alabama</option>
                                   <option value="AK">Alaska</option>
@@ -75,8 +67,8 @@
                                                           <option value="cable">Cable</option>
                                                           <option value="dsl">DSL</option>
                                                           <option value="fiber">Fiber</option>
-                                                          <option value="sat">Satellite</option></select> technology. <br><br>
-                From internet service provider <select>
+                                                          <option value="sat">Satellite</option></select> technology <br>
+                from internet service provider <select>
                                                     <option value="Any">Any</option>
                                                   <option value="atnt">AT&T</option>
                                                   <option value="charter">Charter</option>
@@ -87,33 +79,19 @@
                                                   <option value="mediacom">Mediacom</option>
                                                   <option value="time">Time Warner Cable</option>
                                                   <option value="verizon">Verizon</option>
-                                                  <option value="windstream">Windstream</option></select> .
-                That costs at least $ <input type="text" name = 'txtPriceMin' value = '0'> /month and at most $ <input type="text" name = 'txtPriceMax' value = '0'> /month.<br><br>
+                                                  <option value="windstream">Windstream</option></select> <br>
+                whose monthly cost is in the range $ <input type="text" name = 'txtPriceMin' value = '0'> to $ <input type="text" name = 'txtPriceMax' value = '1000'> <br>
+                </p>
+
+                    <input type="submit" class="btn btn-lg btn-default" value="Get house sample">
+                    <a type="button" class="btn btn-lg btn-default" href="../index.html"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
+
+            </form>
 
 
-             <input type="submit" class="btn btn-lg btn-default" value="Get details">
-
-            </form></p>
-
-            <br><br>
+        {% autoescape off %}{{ output_dump }}{% endautoescape %}
 
 
-        </td>
-        <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
-        <td>
-                {% autoescape off %}{{ output_dump }}{% endautoescape %}
-        </td>
 
-    </tr>
-
-</table>
-
- <br>
-<div class="boxed" >
-
-</div>
-
-
-</body>
-</html>
+  </div></div>
 {% endblock %}
