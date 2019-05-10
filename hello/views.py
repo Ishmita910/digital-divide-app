@@ -26,7 +26,10 @@ def options_landing(request):
 
 def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
-    hset = digitaldivide.HouseholdSet('digitaldivide/dat/household-internet-data.csv').sample()
+    path = 'digitaldivide/dat/household-internet-data.csv'
+    data = pd.read_csv(path)
+    hset = digitaldivide.HouseholdSet(data).sample()
+    
     print(hset)
 
     (rowindex, h) = next(hset.iterrows())
