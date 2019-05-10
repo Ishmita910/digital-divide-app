@@ -28,8 +28,9 @@ def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
     path = 'digitaldivide/dat/household-internet-data.csv'
     data = pd.read_csv(path)
+    # filter here
     hset = digitaldivide.HouseholdSet(data).sample()
-    
+
     print(hset)
 
     (rowindex, h) = next(hset.iterrows())
