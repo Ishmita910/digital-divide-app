@@ -292,10 +292,18 @@ def get_rspec(request):
 
 def get_netem(request):
     global h
+    global hset
+    global data
+    hset = digitaldivide.HouseholdSet(data).sample()
+    (rowindex, h) = next(hset.iterrows())
+    house = digitaldivide.Household(h)
+
     output_dump =  ''' Netem template down <br>'''
-    output_dump += digitaldivide.Household.netem_template_down(h)
+    output_dump += str(house.netem_template_down("192.168.0.1"))
+    # output_dump += digitaldivide.Household.netem_template_down('192.168.0.1')
     output_dump += ''' Netem template up <br>'''
-    output_dump += digitaldivide.Star.netem_template_up(h)
+    output_dump += str(house.netem_template_up("192.168.0.1"))
+    # output_dump += digitaldivide.Household.netem_template_up('192.168.0.1')
 
     output_dump = '<br><br><br>'
     output_dump += ''' Selected household ''' + str(house.unit_id) + ''' has the following characteristics: <br>
