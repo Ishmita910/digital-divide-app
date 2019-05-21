@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
+import json
+import os
 from .models import Greeting
 from django.views.decorators.csrf import csrf_protect
 import digitaldivide.src.digitaldivide as digitaldivide
@@ -26,12 +28,14 @@ def options_landing(request):
 
 def get_result(request):
     # output_dump = digitaldivide.src.digitaldivideutil.digitaldividefunc()
+    global data
     path = 'digitaldivide/dat/household-internet-data.csv'
     data = pd.read_csv(path)
     # filter here
     hset = digitaldivide.HouseholdSet(data).sample()
 
     global h
+
     # print(hset)
     (rowindex, h) = next(hset.iterrows())
     print('>>')
@@ -129,6 +133,7 @@ def house_id(request):
 
     path = 'digitaldivide/dat/household-internet-data.csv'
     # data = pd.read_csv("household-internet-data.csv")
+    global data
     data = pd.read_csv(path)
     # print("size of data")
     # print(data.shape)
@@ -261,22 +266,31 @@ def house_id(request):
 
 def get_json(request):
     global h
+    global hset
+    global data
+    hset = digitaldivide.HouseholdSet(data).sample()
     (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
-    j_response_house = digitaldivide.Household.json_template(h)
-    return HttpResponse(j_response_house, mimetype="application/json", headers={"Content-disposition": "attachment; filename=damlevels.json"})
+    j_response_house = digitaldivide.Household.json_template(house)
+    return HttpResponse(json.dumps(j_response_house), content_type="application/json")
 
 
-def get_rspec():
+def get_rspec(request):
     global h
+    global hset
+    global data
+    hset = digitaldivide.HouseholdSet(data).sample()
     (rowindex, h) = next(hset.iterrows())
-    house = digitaldivide.Household(h)
-    rspec_response = digitaldivide.Star.rspec_write(h)
-    return HttpResponse(rspec_response, mimetype="text/xml",
-                        headers={"Content-disposition": "attachment; filename=damlevels.xml"})
+    house = digitaldivide.Star(h)
+    output_dir = os.getcwd()
+    print(output_dir)
+    rspec = os.path.join(output_dir, "houses.xml")
+    # star.rspec_write(rspec)
+    rspec_response = digitaldivide.Star.rspec_write(house,rspec)
+    return HttpResponse(rspec_response,content_type="application/text" )
 
 
-def get_netem():
+def get_netem(request):
     global h
     output_dump =  ''' Netem template down <br>'''
     output_dump += digitaldivide.Star.netem_template_down(h)
