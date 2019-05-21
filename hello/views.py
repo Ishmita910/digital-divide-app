@@ -293,7 +293,7 @@ def get_rspec(request):
 def get_netem(request):
     global h
     output_dump =  ''' Netem template down <br>'''
-    output_dump += digitaldivide.Star.netem_template_down(h)
+    output_dump += digitaldivide.Household.netem_template_down(h)
     output_dump += ''' Netem template up <br>'''
     output_dump += digitaldivide.Star.netem_template_up(h)
 
