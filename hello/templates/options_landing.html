@@ -8,10 +8,10 @@
     <p>A web application to help researchers emulate real households in test bed experiments</p>
 
             <form action="house_id/" method="post">{% csrf_token %}
-                <p>Give me <input type="text" name = 'txtHouseSetQty'> household(s)<br>
-                from the state of <select>
+                <p>Give me <input type="text" name = "txtHouseSetQty" value = '1'> household(s)<br>
+                from the state of <select name = "txtState">
                                     <option value="Any">Any</option>
-                                  <option value="AL">Alabama</option>
+                                  <option value="AL">  Alabama</option>
                                   <option value="AK">Alaska</option>
                                   <option value="AZ">Arizona</option>
                                   <option value="AR">Arkansas</option>
@@ -62,13 +62,13 @@
                                   <option value="WV">West Virginia</option>
                                   <option value="WI">Wisconsin</option>
                                   <option value="WY">Wyoming</option>
-                                </select> that uses  <select>
+                                </select> that uses  <select name = "txtTechnology" >
                                                             <option value="Any">Any</option>
                                                           <option value="cable">Cable</option>
                                                           <option value="dsl">DSL</option>
                                                           <option value="fiber">Fiber</option>
                                                           <option value="sat">Satellite</option></select> technology <br>
-                from internet service provider <select>
+                from internet service provider <select name = "txtIsp" >
                                                     <option value="Any">Any</option>
                                                   <option value="atnt">AT&T</option>
                                                   <option value="charter">Charter</option>
@@ -80,11 +80,11 @@
                                                   <option value="time">Time Warner Cable</option>
                                                   <option value="verizon">Verizon</option>
                                                   <option value="windstream">Windstream</option></select> <br>
-                whose monthly cost is in the range $ <input type="text" name = 'txtPriceMin' value = '0'> to $ <input type="text" name = 'txtPriceMax' value = '1000'> <br>
+                whose monthly cost is in the range $ <input type="text" name = "txtPriceMin" value = "0"> to $ <input type="text" name = "txtPriceMax" value = "300"> <br>
                 </p>
 
                     <input type="submit" class="btn btn-lg btn-default" value="Get house sample">
-                    <a type="button" class="btn btn-lg btn-default" href="../index.html"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
+                    <a type="button" class="btn btn-lg btn-default" href="back/"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
 
             </form>
 
