@@ -28,6 +28,7 @@ urlpatterns = [
     path("options_landing/back/",hello.views.index, name="index"),
     path("get_json", hello.views.get_json, name="get_json"),
     path("get_rspec", hello.views.get_rspec, name = "get_rspec"),
-    path("get_netem", hello.views.get_netem, name = "get_netem")
+    path("get_netem", hello.views.get_netem, name = "get_netem"),
+    path("back", hello.views.index, name="index"),
 
 ]

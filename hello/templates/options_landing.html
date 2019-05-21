@@ -7,7 +7,7 @@
     <h1>Bridging the Digital Divide </h1>
     <p>A web application to help researchers emulate real households in test bed experiments</p>
 
-            <form action="house_id/" method="post">{% csrf_token %}
+            <form action="house_id" method="post">{% csrf_token %}
                 <p>Give me <input type="text" name = "txtHouseSetQty" value = '1'> household(s)<br>
                 from the state of <select name = "txtState">
                                     <option value="Any">Any</option>
@@ -84,7 +84,7 @@
                 </p>
 
                     <input type="submit" class="btn btn-lg btn-default" value="Get house sample">
-                    <a type="button" class="btn btn-lg btn-default" href="back/"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
+                    <a type="button" class="btn btn-lg btn-default" href="back"><span class="glyphicon glyphicon-flash"></span> Give me fewer options</a>
 
             </form>
 
