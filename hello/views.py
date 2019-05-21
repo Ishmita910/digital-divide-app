@@ -81,15 +81,19 @@ def house_id(request):
                      'MI', 'HI', 'WV', 'FL', 'OR', 'WA', 'AR', 'DE', 'MN', 'VT', 'VA',
                      'ME', 'MT', 'CT', 'DC', 'MO', 'AL', 'NV', 'NE', 'SC', 'RI', 'LA',
                      'MS', 'NM', 'ID', 'WY', 'SD', 'ND']
+        else:
+            state = [state]
         if tech == 'Any':
             tech = ['CABLE', 'DSL', 'FIBER', 'SATELLITE']
+        else:
+            tech=[tech]
         if isp == 'Any':
             isp = ['Comcast', 'Time Warner Cable', 'Cox', 'Mediacom', 'Brighthouse',
                    'Charter', 'Cablevision', 'CenturyLink', 'AT&T', 'Windstream',
                    'Frontier', 'Verizon', 'Wildblue/ViaSat', 'Hughes']
-        state = [str(state)]
-        tech = [str(tech)]
-        isp = [str(isp)]
+        else:
+            isp=[isp]
+
         pricemin = float(pricemin)
         pricemax = float(pricemax)
 
@@ -126,11 +130,14 @@ def house_id(request):
     path = 'digitaldivide/dat/household-internet-data.csv'
     # data = pd.read_csv("household-internet-data.csv")
     data = pd.read_csv(path)
-    sieved_data = data.loc[data['technology'].isin(tech)]
-    print("size of sieved data")
-    print(sieved_data.shape)
-    if sieved_data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE'
+    # print("size of data")
+    # print(data.shape)
+    # print(tech)
+    data = data.loc[data['technology'].isin(tech)]
+    # print("size of sieved data")
+    # print(data.shape)
+    if data.shape == (0, 0):
+        output_dump = 'NO RELEVANT SAMPLE 1'
         return render(
             request,
             'houseset.html',
@@ -138,22 +145,10 @@ def house_id(request):
                 'output_dump': output_dump
             }
         )
-    sieved_data = sieved_data.loc[sieved_data['isp'].isin(isp)]
+    data = data.loc[data['isp'].isin(isp)]
 
-    if sieved_data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE'
-        return render(
-            request,
-            'houseset.html',
-            {
-                'output_dump': output_dump
-            }
-        )
-
-    sieved_data = sieved_data.loc[sieved_data['state'].isin(state)]
-
-    if sieved_data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE'
+    if data.shape == (0, 0):
+        output_dump = 'NO RELEVANT SAMPLE 2'
         return render(
             request,
             'houseset.html',
@@ -162,9 +157,21 @@ def house_id(request):
             }
         )
 
-    sieved_data = sieved_data.loc[sieved_data['monthly.charge'] > float(pricemin)]
+    data = data.loc[data['state'].isin(state)]
 
-    if sieved_data.shape == (0, 0):
+    if data.shape == (0, 0):
+        output_dump = 'NO RELEVANT SAMPLE 3'
+        return render(
+            request,
+            'houseset.html',
+            {
+                'output_dump': output_dump
+            }
+        )
+
+    data = data.loc[data['monthly.charge'] > float(pricemin)]
+
+    if data.shape == (0, 0):
         output_dump = 'NO RELEVANT SAMPLE'
         return render(
             request,
@@ -173,9 +180,9 @@ def house_id(request):
                 'output_dump': output_dump
             }
         )
-    sieved_data = sieved_data.loc[sieved_data['monthly.charge'] < float(pricemax)]
+    data = data.loc[data['monthly.charge'] < float(pricemax)]
 
-    if sieved_data.shape == (0, 0):
+    if data.shape == (0, 0):
         output_dump = 'NO RELEVANT SAMPLE'
         return render(
             request,
@@ -190,8 +197,8 @@ def house_id(request):
     for i in range(int(houseSet)):
 
         if i > 0:
-            sieved_data = sieved_data.loc[sieved_data['unit_id'] != str(unit_id)]
-        if sieved_data.shape == (0, 0):
+            data = data.loc[data['unit_id'] != str(unit_id)]
+        if data.shape == (0, 0):
             output_dump = 'NO RELEVANT SAMPLE'
             return render(
                 request,
@@ -201,9 +208,9 @@ def house_id(request):
                 }
             )
         try:
-            print(sieved_data.shape)
+            print(data.shape)
             # hset = digitaldivide.HouseholdSet(data).sample()
-            hset = digitaldivide.HouseholdSet(sieved_data).sample()
+            hset = digitaldivide.HouseholdSet(data).sample()
         except:
             output_dump = 'NO RELEVANT SAMPLE'
             return render(
@@ -219,7 +226,8 @@ def house_id(request):
         global h
         # print(hset)
         (rowindex, h) = next(hset.iterrows())
-        print('>>')
+        # print('>>')
+        # print(h)
         # print(h)
         house = digitaldivide.Household(h)
 
