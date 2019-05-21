@@ -137,7 +137,7 @@ def house_id(request):
     # print("size of sieved data")
     # print(data.shape)
     if data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE 1'
+        output_dump = 'NO RELEVANT SAMPLE , change technology'
         return render(
             request,
             'houseset.html',
@@ -148,7 +148,7 @@ def house_id(request):
     data = data.loc[data['isp'].isin(isp)]
 
     if data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE 2'
+        output_dump = 'NO RELEVANT SAMPLE , change ISP'
         return render(
             request,
             'houseset.html',
@@ -160,7 +160,7 @@ def house_id(request):
     data = data.loc[data['state'].isin(state)]
 
     if data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE 3'
+        output_dump = 'NO RELEVANT SAMPLE , change State'
         return render(
             request,
             'houseset.html',
@@ -172,7 +172,7 @@ def house_id(request):
     data = data.loc[data['monthly.charge'] > float(pricemin)]
 
     if data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE'
+        output_dump = 'NO RELEVANT SAMPLE, change monthly minimum price'
         return render(
             request,
             'houseset.html',
@@ -183,7 +183,7 @@ def house_id(request):
     data = data.loc[data['monthly.charge'] < float(pricemax)]
 
     if data.shape == (0, 0):
-        output_dump = 'NO RELEVANT SAMPLE'
+        output_dump = 'NO RELEVANT SAMPLE, change maximum monthly price'
         return render(
             request,
             'houseset.html',
@@ -199,7 +199,7 @@ def house_id(request):
         if i > 0:
             data = data.loc[data['unit_id'] != str(unit_id)]
         if data.shape == (0, 0):
-            output_dump = 'NO RELEVANT SAMPLE'
+            output_dump = 'NO RELEVANT SAMPLE, less samples for these specs'
             return render(
                 request,
                 'houseset.html',
