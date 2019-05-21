@@ -261,12 +261,16 @@ def house_id(request):
 
 def get_json(request):
     global h
+    (rowindex, h) = next(hset.iterrows())
+    house = digitaldivide.Household(h)
     j_response_house = digitaldivide.Household.json_template(h)
     return HttpResponse(j_response_house, mimetype="application/json", headers={"Content-disposition": "attachment; filename=damlevels.json"})
 
 
 def get_rspec():
     global h
+    (rowindex, h) = next(hset.iterrows())
+    house = digitaldivide.Household(h)
     rspec_response = digitaldivide.Star.rspec_write(h)
     return HttpResponse(rspec_response, mimetype="text/xml",
                         headers={"Content-disposition": "attachment; filename=damlevels.xml"})
