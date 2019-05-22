@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
 import json
+# from django import jsonify
 import os
 from .models import Greeting
 from django.views.decorators.csrf import csrf_protect
@@ -100,22 +101,6 @@ def house_id(request):
 
         pricemin = float(pricemin)
         pricemax = float(pricemax)
-
-        # TEST
-        # print("-- -- --")
-        # print("house no --")
-        # print(houseSet)
-        # print("state --")
-        # print(state)
-        # print("tech --")
-        # print(tech)
-        # print("isp --")
-        # print(isp)
-        # print("price min --")
-        # print(pricemin)
-        # print("pricemax --")
-        # print(pricemax)
-        # print("-- -- --")
 
     else:
         houseSet = "1"
@@ -226,14 +211,10 @@ def house_id(request):
                 }
             )
 
-
         print(hset)
         global h
-        # print(hset)
         (rowindex, h) = next(hset.iterrows())
-        # print('>>')
-        # print(h)
-        # print(h)
+
         house = digitaldivide.Household(h)
 
         output_dump+='<br>'
@@ -272,21 +253,26 @@ def get_json(request):
     (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
     j_response_house = digitaldivide.Household.json_template(house)
-    return HttpResponse(json.dumps(j_response_house), content_type="application/json")
-
+    # return HttpResponse(json.dumps(j_response_house), content_type="application/json", )
+    response = HttpResponse(j_response_house, content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="foo.json"'
+    return response
+    # return jsonify(name='j_dump.json', data=j_response_house)
 
 def get_rspec(request):
     global h
     global hset
     global data
-    hset = digitaldivide.HouseholdSet(data).sample()
-    (rowindex, h) = next(hset.iterrows())
-    house = digitaldivide.Star(h)
+    # hset = digitaldivide.HouseholdSet(data).sample()
+    # star = digitaldivide.Star()
+    # star.add_household(h)
+    # (rowindex, h) = next(hset.iterrows())
+    house = digitaldivide.Household(h)
     output_dir = os.getcwd()
     print(output_dir)
     rspec = os.path.join(output_dir, "houses.xml")
     # star.rspec_write(rspec)
-    rspec_response = digitaldivide.Star.rspec_write(house,rspec)
+    rspec_response = Star.rspec_write(rspec)
     return HttpResponse(rspec_response,content_type="application/text" )
 
 
@@ -294,15 +280,13 @@ def get_netem(request):
     global h
     global hset
     global data
-    hset = digitaldivide.HouseholdSet(data).sample()
-    (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
 
     output_dump =  ''' Netem template down <br>'''
-    output_dump += str(house.netem_template_down("192.168.0.1"))
+    output_dump += str(house.netem_template_down("0.0.0.0"))
     # output_dump += digitaldivide.Household.netem_template_down('192.168.0.1')
     output_dump += ''' Netem template up <br>'''
-    output_dump += str(house.netem_template_up("192.168.0.1"))
+    output_dump += str(house.netem_template_up("0.0.0.0"))
     # output_dump += digitaldivide.Household.netem_template_up('192.168.0.1')
 
     output_dump = '<br><br><br>'

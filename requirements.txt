@@ -4,3 +4,4 @@ django-heroku
 geni-lib
 pandas
 numpy
+django-jsonify
