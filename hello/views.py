@@ -187,7 +187,7 @@ def house_id(request):
     for i in range(int(houseSet)):
 
         if i > 0:
-            data = data.loc[data['unit_id'] != str(unit_id)]
+            data = data.loc[data['unit_id'] != str(house.unit_id)]
         if data.shape == (0, 0):
             output_dump = 'NO RELEVANT SAMPLE, less samples for these specs'
             return render(
@@ -263,17 +263,14 @@ def get_rspec(request):
     global h
     global hset
     global data
-    # hset = digitaldivide.HouseholdSet(data).sample()
-    # star = digitaldivide.Star()
-    # star.add_household(h)
-    # (rowindex, h) = next(hset.iterrows())
+    hset = digitaldivide.HouseholdSet(data).sample()
+    (rowindex, h) = next(hset.iterrows())
     house = digitaldivide.Household(h)
-    output_dir = os.getcwd()
-    print(output_dir)
-    rspec = os.path.join(output_dir, "houses.xml")
-    # star.rspec_write(rspec)
-    rspec_response = Star.rspec_write(rspec)
-    return HttpResponse(rspec_response,content_type="application/text" )
+    r_response_house = digitaldivide.Household.json_template(house)
+    # return HttpResponse(json.dumps(j_response_house), content_type="application/json", )
+    response = HttpResponse(j_response_house, content_type='application/xml')
+    response['Content-Disposition'] = 'attachment; filename="foo.xml"'
+    return response
 
 
 def get_netem(request):
