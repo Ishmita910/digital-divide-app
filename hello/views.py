@@ -268,7 +268,7 @@ def get_rspec(request):
     house = digitaldivide.Household(h)
     r_response_house = digitaldivide.Household.json_template(house)
     # return HttpResponse(json.dumps(j_response_house), content_type="application/json", )
-    response = HttpResponse(j_response_house, content_type='application/xml')
+    response = HttpResponse(r_response_house, content_type='application/xml')
     response['Content-Disposition'] = 'attachment; filename="foo.xml"'
     return response
 
